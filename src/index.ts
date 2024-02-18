@@ -1,21 +1,16 @@
-import { Telegraf } from 'telegraf';
-import { message } from 'telegraf/filters';
-import dotenv from 'dotenv';
+import express, { Request, Response } from 'express'
 
-dotenv.config();
+const app = express()
+const port = process.env.PORT || 8080
 
-const bot = new Telegraf(process.env.TOKEN as string);
-bot.start((ctx) => ctx.reply('Welcome'));
-bot.help((ctx) => ctx.reply('Send me a sticker'));
-bot.on(message('sticker'), (ctx) => ctx.reply('👍'));
-bot.hears('hi', (ctx) => ctx.reply('Hey there'));
-bot.launch({
-    webhook: {
-        domain: process.env.DOMAIN as string,
-        port: Number(process.env.PORT)
-    }
-});
+app.get('/', (_req: Request, res: Response) => {
+	return res.send('Express Typescript on Vercel')
+})
 
-// Enable graceful stop
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM'));
+app.get('/ping', (_req: Request, res: Response) => {
+	return res.send('pong 🏓')
+})
+
+app.listen(port, () => {
+	return console.log(`Server is listening on ${port}`)
+})

@@ -1,5 +1,3 @@
-/.env
-.vercel
-/node_modules
-index.js
-/dist
+node_modules
+
+yarn-error.log
