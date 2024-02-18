@@ -4,10 +4,9 @@
   "description": "Bot for text based rogue-like RPG game",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx ts-node index.ts",
-    "dev": "npx ts-node index.ts",
-    "build": "npx ts-node index.ts"
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "dev": "npm run build && npm run start"
   },
   "author": "Pixbs",
   "license": "ISC",
