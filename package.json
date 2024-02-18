@@ -4,9 +4,11 @@
   "description": "Bot for text based rogue-like RPG game",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && npm run start",
-    "start": "node ./public/index.js",
-    "dev": "npm run build && npm run start"
+    "start": "nodemon src/index.ts",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pixbs",
   "license": "ISC",
@@ -15,6 +17,8 @@
     "telegraf": "^4.15.3"
   },
   "devDependencies": {
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
